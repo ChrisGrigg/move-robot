@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { describe, expect, test } from '@jest/globals';
-import { runWith } from './index';
+import { moveRobot } from './move-robot';
 
 function exampleTest(name: string) {
   const loadJson = (p: string) => JSON.parse(readFileSync(`${__dirname}/../examples/${name}/${p}`, 'utf8'));
@@ -9,7 +9,7 @@ function exampleTest(name: string) {
     const input = loadJson('input.json');
     const expected = loadJson('expected.json');
 
-    expect(runWith(input)).toBe(expected);
+    expect(moveRobot(input)).toStrictEqual(expected);
   });
 }
 

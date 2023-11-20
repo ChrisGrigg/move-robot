@@ -1,6 +1,14 @@
-// NOTE: we have only provided this as a skeleton & you are free remove it if you want.
-export function runWith(_input: any) {
-  return { status: 'error' };
-}
+import { moveRobot } from './move-robot';
 
-runWith(undefined);
+let inputData = '';
+
+process.stdin.resume();
+process.stdin.on('data', (data) => {
+  inputData += data;
+});
+
+process.stdin.on('end', () => {
+  const inputObject = JSON.parse(inputData);
+  const response = moveRobot(inputObject);
+  console.log(JSON.stringify(response));
+});
